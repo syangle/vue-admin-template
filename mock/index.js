@@ -6,7 +6,8 @@ const table = require('./table')
 
 const mocks = [
   ...user,
-  ...table
+  ...table,
+
 ]
 
 // for front mock

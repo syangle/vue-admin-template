@@ -1,32 +1,30 @@
+import variables from '@/styles/element-variables.scss'
 import defaultSettings from '@/settings'
+import settings from '@/settings'
 
-const { showSettings, fixedHeader, sidebarLogo } = defaultSettings
+const { showSettings, tagsView, fixedHeader, sidebarLogo } = defaultSettings
+const settings1 = {
+  state: {
+    theme: variables.theme,
+    showSettings: showSettings,
+    tagsView: tagsView,
+    fixedHeader: fixedHeader,
+    sidebarLogo: sidebarLogo
+  },
 
-const state = {
-  showSettings: showSettings,
-  fixedHeader: fixedHeader,
-  sidebarLogo: sidebarLogo
-}
+  mutations: {
+    CHANGE_SETTING: (state, { key, value }) => {
+      if (state.hasOwnProperty(key)) {
+        state[key] = value
+      }
+    }
+  },
 
-const mutations = {
-  CHANGE_SETTING: (state, { key, value }) => {
-    // eslint-disable-next-line no-prototype-builtins
-    if (state.hasOwnProperty(key)) {
-      state[key] = value
+  actions: {
+    changeSetting({ commit }, data) {
+      commit('CHANGE_SETTING', data)
     }
   }
 }
-
-const actions = {
-  changeSetting({ commit }, data) {
-    commit('CHANGE_SETTING', data)
-  }
-}
-
-export default {
-  namespaced: true,
-  state,
-  mutations,
-  actions
-}
+export default settings1
 
